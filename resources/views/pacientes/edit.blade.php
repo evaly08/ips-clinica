@@ -2,71 +2,102 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>Editar Paciente</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 
-<body>
+<body class="bg-light">
 
-    <h1>Editar Paciente</h1>
+    <div class="container mt-5">
 
-    <form action="{{ route('pacientes.update', $paciente->id) }}" method="POST">
+        <div class="card shadow">
 
-        @csrf
-        @method('PUT')
+            <div class="card-header bg-warning">
 
-        <label>Documento:</label>
-        <input type="text" name="documento" value="{{ $paciente->documento }}">
+                <h3 class="mb-0">Editar Paciente</h3>
 
-        <br><br>
+            </div>
 
-        <label>Nombres:</label>
-        <input type="text" name="nombres" value="{{ $paciente->nombres }}">
+            <div class="card-body">
 
-        <br><br>
+                <form action="{{ route('pacientes.update', $paciente->id) }}"method="POST">
 
-        <label>Apellidos:</label>
-        <input type="text" name="apellidos" value="{{ $paciente->apellidos }}">
+                    @csrf
+                    @method('PUT')
 
-        <br><br>
+                    <div class="mb-3">
+                        <label class="form-label">Documento</label>
+                        <input type="text" name="documento" value="{{ $paciente->documento }}" class="form-control">
+                    </div>
 
-        <label>Fecha de nacimiento:</label>
-        <input type="date" name="fecha_nacimiento" value="{{ $paciente->fecha_nacimiento }}">
+                    <div class="mb-3">
+                        <label class="form-label">Nombres</label>
+                        <input type="text" name="nombres" value="{{ $paciente->nombres }}" class="form-control">
+                    </div>
 
-        <br><br>
+                    <div class="mb-3">
+                        <label class="form-label">Apellidos</label>
+                        <input type="text" name="apellidos" value="{{ $paciente->apellidos }}" class="form-control">
+                    </div>
 
-        <label>Teléfono:</label>
-        <input type="text" name="telefono" value="{{ $paciente->telefono }}">
+                    <div class="mb-3">
+                        <label class="form-label">Fecha de Nacimiento</label>
+                        <input type="date" name="fecha_nacimiento" value="{{ $paciente->fecha_nacimiento }}" class="form-control">
+                    </div>
 
-        <br><br>
+                    <div class="mb-3">
+                        <label class="form-label">Teléfono</label>
+                        <input type="text" name="telefono"value="{{ $paciente->telefono }}" class="form-control">
+                    </div>
 
-        <label>Correo:</label>
-        <input type="email" name="correo" value="{{ $paciente->correo }}">
+                    <div class="mb-3">
+                        <label class="form-label">Correo Electrónico</label>
+                        <input type="email" name="correo" value="{{ $paciente->correo }}" class="form-control">
+                    </div>
 
-        <br><br>
+                    <div class="mb-3">
+                        <label class="form-label">Dirección</label>
+                        <input type="text" name="direccion" value="{{ $paciente->direccion }}" class="form-control">
+                    </div>
 
-        <label>Dirección:</label>
-        <input type="text" name="direccion" value="{{ $paciente->direccion }}">
+                    <div class="mb-3">
+                        <label class="form-label">Estado</label>
+                        <select name="estado" class="form-select">
 
-        <br><br>
+                            <option value="Activo"
+                                {{ $paciente->estado == 'Activo' ? 'selected' : '' }}>
+                                Activo
+                            </option>
 
-        <label>Estado:</label>
+                            <option value="Inactivo"
+                                {{ $paciente->estado == 'Inactivo' ? 'selected' : '' }}>
+                                Inactivo
+                            </option>
 
-        <select name="estado">
+                        </select>
 
-            <option value="Activo">Activo</option>
+                    </div>
 
-            <option value="Inactivo">Inactivo</option>
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-warning">Actualizar Paciente</button>
+                        <a href="/pacientes" class="btn btn-secondary">Volver</a>
+                    </div>
 
-        </select>
+                </form>
 
-        <br><br>
+            </div>
 
-        <button type="submit">
-            Actualizar Paciente
-        </button>
+        </div>
 
-    </form>
+    </div>
 
 </body>
 

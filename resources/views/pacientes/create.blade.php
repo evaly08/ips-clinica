@@ -3,37 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <title>Registrar Paciente</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="bg-light">
 
-    <h1>Registrar Paciente</h1>
 
-    <form action="{{ route('pacientes.store') }}" method="POST">
-        
-        @csrf 
-        
-        <label>Documento:</label> <input type="text" name="documento"> <br><br> 
+    <div class="container mt-5">
+        <div class="card shadow">
+            <div class="card-header bg-success text-white">
+                <h3 class="mb-0"> Registrar Paciente </h3>
+            </div>
 
-        <label>Nombres:</label> <input type="text" name="nombres"> <br><br>
+            <div class="card-body">
+                <form action="{{ route('pacientes.store') }}" method="POST">
+                    @csrf
 
-        <label>Apellidos:</label> <input type="text" name="apellidos"> <br><br> 
+                    <div class="mb-3">
+                        <label class="form-label"> Documento </label>
+                        <input type="text" name="documento" class="form-control">
+                    </div>
 
-        <label>Fecha de nacimiento:</label> <input type="date" name="fecha_nacimiento"> <br><br>
+                    <div class="mb-3">
+                        <label class="form-label"> Nombres </label>
+                        <input type="text" name="nombres" class="form-control">
+                    </div>
 
-        <label>Teléfono:</label> <input type="text" name="telefono"> <br><br>
+                    <div class="mb-3">
+                        <label class="form-label"> Apellidos </label>
+                        <input type="text" name="apellidos" class="form-control">
+                    </div>
 
-        <label>Correo electrónico:</label> <input type="email" name="correo"> <br><br>
+                    <div class="mb-3">
+                        <label class="form-label"> Fecha de Nacimiento </label>
+                        <input type="date" name="fecha_nacimiento" class="form-control">
+                    </div>
 
-        <label>Dirección:</label> <input type="text" name="direccion"> <br><br>
+                    <div class="mb-3">
+                        <label class="form-label"> Teléfono </label>
+                        <input type="text" name="telefono" class="form-control">
+                    </div>
 
-        <label>Estado:</label> 
-        <select name="estado">
-            <option value="Activo">Activo</option>
-            <option value="Inactivo">Inactivo</option>
-        </select> <br><br>
+                    <div class="mb-3">
+                        <label class="form-label"> Correo Electrónico </label>
+                        <input type="email" name="correo" class="form-control">
+                    </div>
 
-        <button type="submit"> Guardar </button> 
-    </form>
+                    <div class="mb-3">
+                        <label class="form-label"> Dirección </label>
+                        <input type="text" name="direccion" class="form-control">
+                    </div>
 
+                    <div class="mb-3">
+                        <label class="form-label"> Estado </label>
+                        <select name="estado" class="form-select">
+                            <option value="Activo"> Activo </option>
+                            <option value="Inactivo"> Inactivo </option>
+                        </select>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-success"> Guardar Paciente </button>
+                        <a href="/pacientes" class="btn btn-secondary"> Volver </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
